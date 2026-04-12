@@ -1,0 +1,530 @@
+<style>
+    body {
+        background-image: url('Nearest_stars_rotating_red-green.gif');
+    }
+    #mainbox {
+        overflow: visible;
+        background-color: #FFB266;
+        color: black;
+        left: 400px;
+        padding: 10px 10px 10px 10px;
+        height: auto;
+        width: 1000px;
+        border-color: #ff9833;
+        border-style: outset;
+        border-radius: 0px;
+        border-width: 8px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        display: none;
+    }
+    #mainbox2 {
+        overflow: scroll;
+        background-color: #FFB266;
+        color: black;
+        left: 100px;
+        padding: 10px 10px 10px 10px;
+        height: 850px;
+        width: 1000px;
+        border-color: #ff9833;
+        border-style: outset;
+        border-radius: 0px;
+        border-width: 8px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        display: none;
+    }
+    #mainbox3 {
+        overflow: scroll;
+        background-color: #FFB266;
+        color: black;
+        left: 300px;
+        padding: 10px 10px 10px 10px;
+        height: 850px;
+        width: 1000px;
+        border-color: #ff9833;
+        border-style: outset;
+        border-radius: 0px;
+        border-width: 8px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        display: none;
+    }
+    #mainbox4 {
+        overflow: visible;
+        background-color: #FFB266;
+        color: black;
+        left: 280px;
+        padding: 10px 10px 10px 10px;
+        height: auto;
+        top: 400px;
+        width: 350px;
+        border-color: #ff9833;
+        border-style: outset;
+        border-radius: 0px;
+        border-width: 8px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        display: none;
+    }
+    #mainbox5 {
+        overflow: scroll;
+        background-color: #FFB266;
+        color: black;
+        left: 300px;
+        padding: 10px 10px 10px 10px;
+        height: 850px;
+        width: 1000px;
+        border-color: #ff9833;
+        border-style: outset;
+        border-radius: 0px;
+        border-width: 8px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        display: none;
+    }
+    #pin {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 86px;
+        width: 86px;
+    }
+    #map {
+        position: relative;
+        width: 860px;
+        height: 860px;
+    }
+    #mapcontainer {
+        position: relative;
+        display: inline-block;
+    }
+    #welcometotext {
+        position: absolute;
+        font-family: 'Courier New', Courier, monospace;
+        color: rgb(255, 255, 255);
+        top: 450px;
+        left: 350px;
+        font-size: 100px;
+        z-index: 101;
+    }
+    #welcomevid {
+        top: 0px;
+        left: 0px;
+        display: block;
+        /* width: 100%;
+        height: auto; */
+        width: 100vw;
+        height: 100vh;
+        border: none;
+        position: absolute;
+        z-index: 100;
+        object-fit: cover;
+    }
+    #welcomescreen {
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: auto;
+        /* width: 100vw;
+        height: 100vh; */ 
+        position: absolute;
+        z-index: 99;
+        /* object-fit: contain; */
+        display: none;
+    }
+    #menubutton {
+        position: fixed;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 50px;
+        top: -100px;
+        left: 20%;
+        width: 40%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        transform: translateX(-40%);
+        animation: GETDOWN 3s forwards;
+        animation-delay: 6.3s;
+        text-shadow: 2px 2px black;
+    }
+
+    #menubutton2 {
+        position: fixed;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 50px;
+        top: -100px;
+        left: 40%;
+        width: 40%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        transform: translateX(-30%);
+        animation: GETDOWN2 3s forwards;
+        animation-delay: 6.7s;
+        text-shadow: 2px 2px black;
+    }
+
+    #menubutton3 {
+        position: fixed;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 50px;
+        top: -100px;
+        left: 60%;
+        width: 40%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        transform: translateX(-20%);
+        animation: GETDOWN3 3s forwards;
+        animation-delay: 6.9s;
+        text-shadow: 2px 2px black;
+    }
+
+    #menubutton4 {
+        position: fixed;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 50px;
+        top: 40%;
+        left: -300px;
+        width: 40%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        transform: translateY(-20%);
+        animation: GETDOWN4 3s forwards;
+        animation-delay: 7.1s;
+        text-shadow: 2px 2px black;
+    }
+
+    #menubutton5 {
+        position: fixed;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 50px;
+        top: 60%;
+        left: -300px;
+        width: 40%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        transform: translateY(-40%);
+        animation: GETDOWN5 3s forwards;
+        /* animation-delay: 7.3s; */
+        animation-delay: 0.1s;
+        text-shadow: 2px 2px black;
+    }
+
+    #menubutton:hover {
+        color: #e82e00;
+    }
+    #menubutton2:hover {
+        color: #e82e00;
+    }
+    #menubutton3:hover {
+        color: #e82e00;
+    }
+    #menubutton4:hover {
+        color: #e82e00;
+    }
+    #menubutton5:hover {
+        color: #e82e00;
+    }
+    
+
+    #menubullet {
+        top: 450px;
+        left: 325px;
+        /* top: 45%;
+        left: 15%; */
+        position: absolute;
+        z-index: 96;
+        width: 45%;
+        height: 45%;
+    }
+    .button {
+        background-color: #ccc366;
+        border: none;
+        color: #bfb440;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        cursor: pointer;
+        border: 2px solid #58541e;
+        font-weight: 900;
+    }
+
+    .mainboxtext {
+        color: #58541e;
+        font-size: 30px;
+        cursor: pointer;
+        font-weight: 900;
+    }
+
+    .mainboxtext:hover {
+        color: #bfb440;
+    }
+
+    .mainboxtextreal {
+        color: #58541e;
+        font-size: 18px;
+        font-weight: 900;
+    }
+
+    .mainboxtextreal2 {
+        color: #58541e;
+        font-size: 24px;
+        font-weight: 900;
+    }
+
+    .mainboxtextreal1 {
+        color: #58541e;
+        font-size: 30px;
+        font-weight: 900;
+    }
+
+    #destroyitall {
+        position: absolute;
+        left: 30%;
+        top: 30%;
+        width: 640px;
+        height: 360px;
+        z-index: -5;
+    }
+
+    #gnomevahud {
+        position: absolute;
+        /* left: 50%;
+        top: 50%; */
+        width: 100%;
+        height: 100%;
+        z-index: -5;
+    }
+
+    @keyframes menutextrotate {
+        0%      {rotate: 41deg;left: 508px;top: 440px}
+        50%     {rotate: 59deg;left: 528px;top: 435px}
+        100%    {rotate: 41deg;left: 508px;top: 440px}
+    }
+            /* rotate: 41deg;
+        animation: menutextrotate 3s infinite alternate; */
+
+
+    @keyframes GETDOWN {
+        to {
+            top: 70px;
+        }
+    }
+
+    @keyframes GETDOWN2 {
+        to {
+            top: 222px;
+        }
+    }
+
+    @keyframes GETDOWN3 {
+        to {
+            top: 147px;
+        }
+    }
+
+    @keyframes GETDOWN4 {
+        to {
+            left: 200px;
+        }
+    }
+
+    @keyframes GETDOWN5 {
+        to {
+            left: 247px;
+        }
+    }
+
+</style>
+
+<body>
+    <div>
+        <h1 id="welcometotext">Welcome to...</h1>
+        <video id="welcomevid" autoplay preload="auto">
+            <source src="awesome intro video2!.mkv" type="video/mp4">
+        </video>
+        <img id="menubullet" src="bullet.gif" alt="bullet">
+        <h1 id="menubutton" onclick="document.getElementById('mainbox').style.zIndex='105',document.getElementById('mainbox').style.display='block'">Where am I?</h1>
+        <h1 id="menubutton2" onclick="document.getElementById('mainbox2').style.zIndex='105',document.getElementById('mainbox2').style.display='block'">Screenies</h1>
+        <h1 id="menubutton3" onclick="document.getElementById('mainbox3').style.zIndex='105',document.getElementById('mainbox3').style.display='block'">Clips</h1>
+        <h1 id="menubutton4" onclick="document.getElementById('mainbox4').style.zIndex='105',document.getElementById('mainbox4').style.display='block'">Checklist</h1>
+        <h1 id="menubutton5" onclick="document.getElementById('mainbox5').style.zIndex='105',document.getElementById('mainbox5').style.display='block'">Gnomeva</h1>
+        <img id="welcomescreen" src="freezeframe2.gif" alt="title text">
+
+        <img id="destroyitall" src="missilegif.gif">
+        <img id="gnomevahud" src="gnomevanobg.gif">
+        <!-- <img id="welcomescreen" src="gum y shart000959.png" alt="title frame" style="width: 100%;height: auto;position: absolute;z-index: 99;">
+        <img id="welcomescreentitle" src="coolesttextever.gif" alt="title text" style="top: 50px;left: 300px;position: absolute;z-index: 98;"> -->
+    </div>
+    <div id="mainbox">
+        <h3 class= "mainboxtext" onclick="killthisthing()">I've seen enough. Kill this thing.</h3>
+        <!-- <button type="button" class="button" onclick="document.getElementById('pin').style.right = changeLoc()">Wrong location?</button> -->
+        <h2 class= "mainboxtext" onclick="document.getElementById('pin').style.right = changeLoc()" >Wrong location? Click here...</h2>
+        <div id="mapcontainer">
+            <img id="map" src="Map_Stillwater_Bayou_Blank.png">
+            <img id="pin" src="push-pin-icon-red-5-removebg-preview.png">
+        </div>
+    </div>
+    <div id="mainbox2">
+        <h1 class="mainboxtextreal1">Screenie gallery</h1>
+        <h2 class="mainboxtextreal2">Welcome to my screenie gallery.......... enjoy......</h2>
+        <h3 class="mainboxtextreal" style="text-align: left;">He got stuck in the toilet on vertigo!</h3>
+        <img style="width: 1000px;height: 850px;" src="stuckintoilet.png" alt="He got stuck in the toilet on vertigo...">
+        <img src="pipitt1.png">
+        <img src="pipitt2.png">
+        <h3 class= "mainboxtext" onclick="killthisgallery()">I'm sick of this image gallery. Kill it with fire NOW!</h3>
+    </div>
+    <div id="mainbox3">
+        <h1 class="mainboxtextreal1">Clips section</h1>
+        <h2 class="mainboxtextreal">Clip time clip time clip time clip time</h2>
+        <h3 class="mainboxtextreal" style="text-align: left;">The intro clip! Again!</h3>
+        <video style="width: 1000px;height: 600px;" src="awesome intro video2!.mkv" controls type="video/mp4"></video>
+        <h3 class="mainboxtextreal" style="text-align: left;">Real clip</h3>
+        <video style="width: 1000px;height: 600px;" src="websiterclip1.mov" controls type="video/mp4"></video>
+        <h3 class="mainboxtextreal" style="text-align: left;">He slipped and fell :o</h3>
+        <video style="width: 1000px;height: 600px;" src="websiterclip2.mov" controls type="video/mp4"></video>
+        <h3 class="mainboxtextreal" style="text-align: left;">Collat</h3>
+        <video style="width: 1000px;height: 600px;" src="websiterclip3.mov" controls type="video/mp4"></video>
+        <h3 class="mainboxtextreal" style="text-align: left;">How did this happen</h3>
+        <video style="width: 1000px;height: 600px;" src="websiterclip4.mov" controls type="video/mp4"></video>
+        <h3 class="mainboxtextreal" style="text-align: left;">Wavedash</h3>
+        <video style="width: 1000px;height: 600px;" src="websiterclip5.mov" controls type="video/mp4"></video>
+        <h3 class="mainboxtextreal" style="text-align: left;">Outsmarted outmaeuvered outWIN outAWESOME</h3>
+        <video style="width: 1000px;height: 600px;" src="websiterclip6.mov" controls type="video/mp4"></video>
+        <h3 class="mainboxtextreal" style="text-align: left;">Super cool and swag and cool clip</h3>
+        <video style="width: 1000px;height: 600px;" src="websiterclip7.mov" controls type="video/mp4"></video>
+        <h3 class= "mainboxtext" onclick="killthisclips()">I'm done here. Explode.</h3>
+    </div>
+    <div id="mainbox4">
+        <h1 class="mainboxtextreal1" >Checklist of stuff to do on this website</h1>
+        <h3 class="mainboxtextreal" >Map showing where I am</h3>
+        <h3 class="mainboxtextreal" >Screenies</h3>
+        <h3 class="mainboxtextreal" >Clips</h3>
+        <h3 class="mainboxtextreal" >Checklist</h3>
+        <h3 class="mainboxtextreal" >Gnomeva shrine</h3>
+        <h3 class= "mainboxtext" onclick="killthislist()">No fancy close. Just go.</h3>
+    </div>
+    <div id="mainbox5">
+        <h1 class="mainboxtextreal1">Gnomeva</h1>
+        <h3 class="mainboxtextreal" style="text-align: left;">My Gnomeva</h3>
+        <img style="width: 1000px;height: 850px;" src="gnomeva shrine.png" alt="The one true Gnomeva">
+        <h3 class= "mainboxtext" onclick="makemeahud()">Click me to make this your hud...</h3>
+        <img style="width: 1000px;height: 850px;" src="gnomevanobg.gif" alt="Gnomeva no bg gif">
+        <h3 class= "mainboxtext" onclick="killthisshrine()">Thank you for this. I'm going now</h3>
+    </div>
+</body>
+
+<script>
+    const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+
+    const mapcontainer = document.getElementById('mapcontainer');
+    const pin = document.getElementById('pin');
+    const mainbox = document.getElementById('mainbox');
+
+    const thefonts = ["'Courier New', Courier, monospace","'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif","'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif","'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif","'Segoe UI', Tahoma, Geneva, Verdana, sans-serif","'Times New Roman', Times, serif","'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif","Arial, Helvetica, sans-serif","Cambria, Cochin, Georgia, Times, 'Times New Roman', serif","Georgia, 'Times New Roman', Times, serif","Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif","Verdana, Geneva, Tahoma, sans-serif"];
+    const randomthefonts = thefonts[Math.floor(Math.random() * thefonts.length)];
+    const randomr = Math.floor(Math.random() * 255);
+    const randomg = Math.floor(Math.random() * 255);
+    const randomb = Math.floor(Math.random() * 255);
+    console.log(randomthefonts);
+    console.log(randomr, randomg, randomb);
+
+    function changeLoc() {
+        const restrx = mapcontainer.clientWidth - pin.clientWidth;
+        const restry = mapcontainer.clientHeight - pin.clientHeight;
+        console.log(mapcontainer.clientWidth, mapcontainer.clientHeight);
+        console.log(restrx, restry);
+
+        const locx = Math.floor(Math.random() * restrx);
+        const locy = Math.floor(Math.random() * restry);
+        console.log(locx, locy);
+        
+        const image = document.getElementById('pin');
+        image.style.top = `${locx}px`
+        image.style.right = `${locy}px`
+    }
+    window.addEventListener("load", changeLoc);
+    window.onload = changeLoc;
+
+    function sendtoback() {
+        document.getElementById('welcomevid').style.zIndex='0';
+        document.getElementById('welcomevid').style.display='hidden';
+        document.getElementById('welcomescreen').style.zIndex='100';
+        document.getElementById('welcometotext').style.zIndex='2';
+        document.getElementById('menubutton').style.zIndex='103';
+        document.getElementById('menubutton2').style.zIndex='103';
+        document.getElementById('menubutton3').style.zIndex='103';
+        document.getElementById('menubutton4').style.zIndex='103';
+        document.getElementById('menubutton5').style.zIndex='103';
+        document.getElementById('menubullet').style.zIndex='104';
+        document.getElementById('welcomescreen').style.width='100vw';
+        document.getElementById('welcomescreen').style.height='100vh';
+        document.getElementById('welcomescreen').style.display='block';
+        document.getElementById('menubullet').style.left='15%';
+        document.getElementById('menubullet').style.top='45%';
+    }
+    setTimeout("sendtoback()", 0) //6100  6220  6230  8700 obviously change this to the exact amount after editing the video
+
+    function welcometotext() {
+        document.getElementById('welcometotext').style.fontFamily=randomthefonts;
+        document.getElementById('welcometotext').style.color=`rgb(${randomr}, ${randomg}, ${randomb})`;
+    }
+    window.addEventListener("load", welcometotext);
+    console.log('hgsafdjkhsdjkfgsiudfsiufytiuw4y675r36487567389247756982 Hello World!')
+
+    async function killthisthing() {
+        document.getElementById('map').src = 'explosion-cat.gif';
+        await delay(1000);
+        document.getElementById('mainbox').style.display='none';
+        document.getElementById('map').src = 'Map_Stillwater_Bayou_Blank.png';
+    }
+
+    async function killthisgallery() {
+        // document.getElementById('destroyitall').style.block='block'
+        document.getElementById('destroyitall').style.zIndex='200';
+        await delay(3000);
+        document.getElementById('mainbox2').style.display='none';
+        document.getElementById('destroyitall').style.zIndex='-5';
+    }
+
+    async function killthisclips() {
+        // document.getElementById('destroyitall').style.block='block'
+        document.getElementById('destroyitall').style.zIndex='200';
+        await delay(3000);
+        document.getElementById('mainbox3').style.display='none';
+        document.getElementById('destroyitall').style.zIndex='-5';
+    }
+
+    function killthislist() {
+        document.getElementById('mainbox4').style.display='none';
+    }
+
+    function killthisshrine() {
+        document.getElementById('mainbox5').style.display='none';
+    }
+
+    function makemeahud() {
+        document.getElementById('gnomevahud').style.zIndex='200';
+    }
+</script>
+
+<!-- add menu text that is pulled forward after settimeout
+clips
+screenies
+etc
+ -->
+
+<!-- get aspect ratio, shrink bullet accordingly + keep position gah -->
+<!-- why are you reading this go away!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
