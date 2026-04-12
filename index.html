@@ -214,8 +214,8 @@
         z-index: 97;
         transform: translateY(-40%);
         animation: GETDOWN5 3s forwards;
-        /* animation-delay: 7.3s; */
-        animation-delay: 0.1s;
+        animation-delay: 7.3s;
+        /* animation-delay: 0.1s; */
         text-shadow: 2px 2px black;
     }
 
@@ -305,6 +305,7 @@
         width: 100%;
         height: 100%;
         z-index: -5;
+        pointer-events: none;
     }
 
     @keyframes menutextrotate {
@@ -391,19 +392,19 @@
         <h3 class="mainboxtextreal" style="text-align: left;">The intro clip! Again!</h3>
         <video style="width: 1000px;height: 600px;" src="awesome intro video2!.mkv" controls type="video/mp4"></video>
         <h3 class="mainboxtextreal" style="text-align: left;">Real clip</h3>
-        <video style="width: 1000px;height: 600px;" src="websiterclip1.mov" controls type="video/mp4"></video>
+        <img style="width: 1000px;height: 600px;" src="websiterclip1.gif"></img>
         <h3 class="mainboxtextreal" style="text-align: left;">He slipped and fell :o</h3>
-        <video style="width: 1000px;height: 600px;" src="websiterclip2.mov" controls type="video/mp4"></video>
+        <img style="width: 1000px;height: 600px;" src="websiterclip2.gif"></img>
         <h3 class="mainboxtextreal" style="text-align: left;">Collat</h3>
-        <video style="width: 1000px;height: 600px;" src="websiterclip3.mov" controls type="video/mp4"></video>
+        <img style="width: 1000px;height: 600px;" src="websiterclip3.gif"></img>
         <h3 class="mainboxtextreal" style="text-align: left;">How did this happen</h3>
-        <video style="width: 1000px;height: 600px;" src="websiterclip4.mov" controls type="video/mp4"></video>
+        <img style="width: 1000px;height: 600px;" src="websiterclip4.gif"></img>
         <h3 class="mainboxtextreal" style="text-align: left;">Wavedash</h3>
-        <video style="width: 1000px;height: 600px;" src="websiterclip5.mov" controls type="video/mp4"></video>
+        <img style="width: 1000px;height: 600px;" src="websiterclip5.gif"></img>
         <h3 class="mainboxtextreal" style="text-align: left;">Outsmarted outmaeuvered outWIN outAWESOME</h3>
-        <video style="width: 1000px;height: 600px;" src="websiterclip6.mov" controls type="video/mp4"></video>
+        <img style="width: 1000px;height: 600px;" src="websiterclip6.gif"></img>
         <h3 class="mainboxtextreal" style="text-align: left;">Super cool and swag and cool clip</h3>
-        <video style="width: 1000px;height: 600px;" src="websiterclip7.mov" controls type="video/mp4"></video>
+        <img style="width: 1000px;height: 600px;" src="websiterclip7.gif"></img>
         <h3 class= "mainboxtext" onclick="killthisclips()">I'm done here. Explode.</h3>
     </div>
     <div id="mainbox4">
@@ -425,6 +426,7 @@
     </div>
 </body>
 
+<!-- and yes, i'm putting the script in the same html file. and bugs? dont get patched! -->
 <script>
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -475,7 +477,7 @@
         document.getElementById('menubullet').style.left='15%';
         document.getElementById('menubullet').style.top='45%';
     }
-    setTimeout("sendtoback()", 0) //6100  6220  6230  8700 obviously change this to the exact amount after editing the video
+    setTimeout("sendtoback()", 6100) //6100  6220  6230  8700 obviously change this to the exact amount after editing the video
 
     function welcometotext() {
         document.getElementById('welcometotext').style.fontFamily=randomthefonts;
