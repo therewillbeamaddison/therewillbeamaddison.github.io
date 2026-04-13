@@ -221,6 +221,22 @@
         text-shadow: 2px 2px black;
     }
 
+    #timesincewebsite {
+        position: fixed;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 24px;
+        bottom: 0%;
+        left: 300px;
+        width: 40%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        animation: thesmokewarrior 5s forwards;
+        animation-delay: 6.1s;
+        /* animation-delay: 0.1s; */
+        text-shadow: 2px 2px black;
+    }
+
     #menubutton:hover {
         color: #e82e00;
     }
@@ -268,6 +284,7 @@
         font-size: 30px;
         cursor: pointer;
         font-weight: 900;
+        text-decoration: underline;
     }
 
     .mainboxtext:hover {
@@ -350,6 +367,15 @@
         }
     }
 
+    @keyframes thesmokewarrior {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
 </style>
 
 <body>
@@ -364,6 +390,7 @@
         <h1 id="menubutton3" onclick="document.getElementById('mainbox3').style.zIndex='105',document.getElementById('mainbox3').style.display='block'">Clips</h1>
         <h1 id="menubutton4" onclick="document.getElementById('mainbox4').style.zIndex='105',document.getElementById('mainbox4').style.display='block'">Checklist</h1>
         <h1 id="menubutton5" onclick="document.getElementById('mainbox5').style.zIndex='105',document.getElementById('mainbox5').style.display='block'">Gnomeva</h1>
+        <h1 id="timesincewebsite">0</h1>
         <img id="welcomescreen" src="freezeframe2.gif" alt="title text">
 
         <img id="destroyitall" src="missilegif.gif">
@@ -432,7 +459,15 @@
 <!-- and yes, i'm putting the script in the same html file. and bugs? dont get patched! -->
 <script>
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+    const awesomedate = new Date('2026-04-12T23:42:00Z')
 
+    function secondswebsitefunctionthing() {
+        const now = new Date();
+        const difference = Math.floor((now - awesomedate) / 1000);
+        const counter = document.getElementById('timesincewebsite');
+        counter.textContent = `This website has existed for ${difference} seconds.`;
+        setTimeout(secondswebsitefunctionthing, 1000);
+    }
 
     const mapcontainer = document.getElementById('mapcontainer');
     const pin = document.getElementById('pin');
@@ -473,6 +508,7 @@
         document.getElementById('menubutton3').style.zIndex='103';
         document.getElementById('menubutton4').style.zIndex='103';
         document.getElementById('menubutton5').style.zIndex='103';
+        document.getElementById('timesincewebsite').style.zIndex='103';
         document.getElementById('menubullet').style.zIndex='104';
         document.getElementById('welcomescreen').style.width='100vw';
         document.getElementById('welcomescreen').style.height='100vh';
@@ -523,6 +559,7 @@
     function makemeahud() {
         document.getElementById('gnomevahud').style.zIndex='200';
     }
+    secondswebsitefunctionthing()
 </script>
 
 <!-- add menu text that is pulled forward after settimeout
