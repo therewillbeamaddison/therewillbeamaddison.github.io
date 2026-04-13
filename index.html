@@ -225,6 +225,22 @@
         position: fixed;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 24px;
+        bottom: 5%;
+        left: 300px;
+        width: 40%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        animation: thesmokewarrior 5s forwards;
+        animation-delay: 6.1s;
+        /* animation-delay: 0.1s; */
+        text-shadow: 2px 2px black;
+    }
+
+    #realvisitorsnotfake {
+        position: fixed;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 24px;
         bottom: 0%;
         left: 300px;
         width: 40%;
@@ -391,6 +407,7 @@
         <h1 id="menubutton4" onclick="document.getElementById('mainbox4').style.zIndex='105',document.getElementById('mainbox4').style.display='block'">Checklist</h1>
         <h1 id="menubutton5" onclick="document.getElementById('mainbox5').style.zIndex='105',document.getElementById('mainbox5').style.display='block'">Gnomeva</h1>
         <h1 id="timesincewebsite">0</h1>
+        <h1 id="realvisitorsnotfake"></h1>
         <img id="welcomescreen" src="freezeframe2.gif" alt="title text">
 
         <img id="destroyitall" src="missilegif.gif">
@@ -469,6 +486,10 @@
         setTimeout(secondswebsitefunctionthing, 1000);
     }
 
+    const realvisitors = Math.floor(Math.random() * 23742);
+    const visitors = document.getElementById('realvisitorsnotfake');
+    visitors.textContent = `Visitors today: ${realvisitors}`;
+
     const mapcontainer = document.getElementById('mapcontainer');
     const pin = document.getElementById('pin');
     const mainbox = document.getElementById('mainbox');
@@ -509,6 +530,7 @@
         document.getElementById('menubutton4').style.zIndex='103';
         document.getElementById('menubutton5').style.zIndex='103';
         document.getElementById('timesincewebsite').style.zIndex='103';
+        document.getElementById('realvisitorsnotfake').style.zIndex='103';
         document.getElementById('menubullet').style.zIndex='104';
         document.getElementById('welcomescreen').style.width='100vw';
         document.getElementById('welcomescreen').style.height='100vh';
