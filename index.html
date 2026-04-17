@@ -253,6 +253,21 @@
         text-shadow: 2px 2px black;
     }
 
+    #chudcertification {
+        position: fixed;
+        bottom: 0%;
+        right: 0%;
+        width: 10%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        animation: chudspin 5s;
+        animation-delay: 6.1s;
+        /* animation-delay: 0.1s; */
+        text-shadow: 2px 2px black;
+        animation-iteration-count: infinite;
+    }
+
     #menubutton:hover {
         color: #e82e00;
     }
@@ -392,6 +407,11 @@
         }
     }
 
+    @keyframes chudspin {
+        0% {transform: rotateY(0deg)}
+        100% {transform: rotateY(360deg);}
+    }
+
 </style>
 
 <body>
@@ -408,10 +428,13 @@
         <h1 id="menubutton5" onclick="document.getElementById('mainbox5').style.zIndex='105',document.getElementById('mainbox5').style.display='block'">Gnomeva</h1>
         <h1 id="timesincewebsite">0</h1>
         <h1 id="realvisitorsnotfake"></h1>
+        <img id="chudcertification" src="badgeofhonour.png" onclick="playchud()">
         <img id="welcomescreen" src="freezeframe2.gif" alt="title text">
-
         <img id="destroyitall" src="missilegif.gif">
         <img id="gnomevahud" src="gnomevanobg.gif">
+        <audio id="chudaudio">
+            <source src="chud-certified.mp3" type="audio/mpeg">
+        </audio>
         <!-- <img id="welcomescreen" src="gum y shart000959.png" alt="title frame" style="width: 100%;height: auto;position: absolute;z-index: 99;">
         <img id="welcomescreentitle" src="coolesttextever.gif" alt="title text" style="top: 50px;left: 300px;position: absolute;z-index: 98;"> -->
     </div>
@@ -455,6 +478,8 @@
         <img style="width: 1000px;height: 600px;" src="websiterclip6.gif"></img>
         <h3 class="mainboxtextreal" style="text-align: left;">Super cool and swag and cool clip</h3>
         <img style="width: 1000px;height: 600px;" src="websiterclip7.gif"></img>
+        <h3 class="mainboxtextreal" style="text-align: left;">I don't think he likes the sneaky shotgun route</h3>
+        <img style="width: 1000px;height: 600px;" src="websiterclip8.gif"></img>
         <h3 class= "mainboxtext" onclick="killthisclips()">I'm done here. Explode.</h3>
     </div>
     <div id="mainbox4">
@@ -479,7 +504,8 @@
 <!-- and yes, i'm putting the script in the same html file. and bugs? dont get patched! -->
 <script>
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-    const awesomedate = new Date('2026-04-12T23:42:00Z')
+    const awesomedate = new Date('2026-04-12T23:42:00Z');
+    var audible = document.getElementById("chudaudio");
 
     function secondswebsitefunctionthing() {
         const now = new Date();
@@ -534,6 +560,7 @@
         document.getElementById('menubutton5').style.zIndex='103';
         document.getElementById('timesincewebsite').style.zIndex='103';
         document.getElementById('realvisitorsnotfake').style.zIndex='103';
+        document.getElementById('chudcertification').style.zIndex='103';
         document.getElementById('menubullet').style.zIndex='104';
         document.getElementById('welcomescreen').style.width='100vw';
         document.getElementById('welcomescreen').style.height='100vh';
@@ -583,6 +610,9 @@
 
     function makemeahud() {
         document.getElementById('gnomevahud').style.zIndex='200';
+    }
+    function playchud() {
+        audible.play();
     }
     secondswebsitefunctionthing()
 </script>
