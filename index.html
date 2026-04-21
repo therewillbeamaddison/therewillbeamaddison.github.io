@@ -140,6 +140,20 @@
         display: none;
         pointer-events: none;
     }
+    #loadingscreen {
+        top: 0px;
+        left: 0px;
+        /* width: 100%;
+        height: auto; */
+        width: 100vw;
+        height: 100vh; 
+        position: absolute;
+        z-index: 999;
+        /* object-fit: contain; */
+        display: block;
+        pointer-events: none;
+    }
+
     #menubutton {
         position: fixed;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -417,6 +431,7 @@
 <body>
     <div>
         <h1 id="welcometotext">Welcome to...</h1>
+        <img id="loadingscreen" src="freezeframe1.gif">
         <video id="welcomevid" autoplay preload="auto">
             <source src="awesome intro video2!.mkv" type="video/mp4">
         </video>
@@ -506,6 +521,9 @@
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     const awesomedate = new Date('2026-04-12T23:42:00Z');
     var audible = document.getElementById("chudaudio");
+    const loadvideo = document.getElementById('welcomevid');
+    const loadsc = document.getElementById('loadingscreen');
+
 
     function secondswebsitefunctionthing() {
         const now = new Date();
@@ -549,6 +567,9 @@
     window.onload = changeLoc;
 
     function sendtoback() {
+        loadsc.style.display = 'none';
+        loadvideo.play()
+        loadvideo.addEventListener("ended", (event) => {
         document.getElementById('welcomevid').style.zIndex='0';
         document.getElementById('welcomevid').style.display='hidden';
         document.getElementById('welcomescreen').style.zIndex='100';
@@ -567,8 +588,18 @@
         document.getElementById('welcomescreen').style.display='block';
         document.getElementById('menubullet').style.left='15%';
         document.getElementById('menubullet').style.top='45%';
+        });
     }
-    setTimeout("sendtoback()", 6100) //6100  6220  6230  8700 obviously change this to the exact amount after editing the video
+    // function videoreadyNOW(){
+
+    // }
+    if (loadvideo.readyState >= 3) {
+        sendtoback()
+        // setTimeout("sendtoback()", 6100) //6100  6220  6230  8700 obviously change this to the exact amount after editing the video
+    } else {
+        loadvideo.addEventListener('canplaythrough', sendtoback, { once: true });
+    }
+    
 
     function welcometotext() {
         document.getElementById('welcometotext').style.fontFamily=randomthefonts;
