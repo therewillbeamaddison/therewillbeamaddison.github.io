@@ -4,12 +4,12 @@
         overflow: hidden;
     }
     #mainbox {
-        overflow: visible;
+        overflow: scroll;
         background-color: #FFB266;
         color: black;
         left: 400px;
         padding: 10px 10px 10px 10px;
-        height: auto;
+        height: 850px;
         width: 1000px;
         border-color: #ff9833;
         border-style: outset;
@@ -514,6 +514,7 @@
         <h3 class="mainboxtextreal" >Clips</h3>
         <h3 class="mainboxtextreal" >Checklist</h3>
         <h3 class="mainboxtextreal" >Gnomeva shrine</h3>
+        <h3 class="mainboxtextreal" >Chud badge</h3>
         <h3 class= "mainboxtext" onclick="killthislist()">No fancy close. Just go.</h3>
     </div>
     <div id="mainbox5">
@@ -533,7 +534,6 @@
     var audible = document.getElementById("chudaudio");
     const loadvideo = document.getElementById('welcomevid');
     const loadsc = document.getElementById('loadingscreen');
-
 
     function secondswebsitefunctionthing() {
         const now = new Date();
@@ -560,6 +560,9 @@
     console.log(randomr, randomg, randomb);
 
     function changeLoc() {
+        const maplist = ['De_vertigo_lower_radar.webp', 'Map_Stillwater_Bayou_Blank.png', 'Cs2_italy_radar.webp', 'nuke_radar.webp'];
+        const randommap = maplist[Math.floor(Math.random() * maplist.length)];
+        document.getElementById('map').src = randommap;
         const restrx = mapcontainer.clientWidth - pin.clientWidth;
         const restry = mapcontainer.clientHeight - pin.clientHeight;
         console.log(mapcontainer.clientWidth, mapcontainer.clientHeight);
