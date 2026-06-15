@@ -235,6 +235,32 @@
         text-shadow: 2px 2px black;
     }
 
+    #newarea {
+        position: fixed;
+        top: 45%;
+        left: 60%;
+        z-index: 97;
+        animation: thesmokewarrior 5s forwards;
+        animation-delay: 6.1s;
+        /* animation-delay: 0.1s; */
+    }
+
+    #timesincenew {
+        position: fixed;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 24px;
+        top: 50%;
+        left: 60%;
+        width: 40%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        animation: thesmokewarrior 5s forwards;
+        animation-delay: 6.1s;
+        /* animation-delay: 0.1s; */
+        text-shadow: 2px 2px black;
+    }
+
     #timesincewebsite {
         position: fixed;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -443,6 +469,8 @@
         <h1 id="menubutton5" onclick="document.getElementById('mainbox5').style.zIndex='105',document.getElementById('mainbox5').style.display='block'">Gnomeva</h1>
         <h1 id="timesincewebsite">0</h1>
         <h1 id="realvisitorsnotfake"></h1>
+        <img id="newarea" src="flamingtext_com-936542157.gif" alt="NEW CONTENT!!">
+        <h1 id="timesincenew">0</h1>
         <img id="chudcertification" src="badgeofhonour.png" onclick="playchud()">
         <img id="welcomescreen" src="freezeframe2.gif" alt="title text">
         <img id="destroyitall" src="missilegif.gif">
@@ -476,7 +504,10 @@
         <img src="Peachssssssszreaction.png">
         <h3 class="mainboxtextreal" style="text-align: left;">can you hold tab first...</h3>
         <img src="evidenceofplayingwell.png">
+        <h3 class="mainboxtextreal" style="text-align: left;">CHEESE!</h3>
+        <img src="CHEESE.png">
         <h3 class= "mainboxtext" onclick="killthisgallery()">I'm sick of this image gallery. Kill it with fire NOW!</h3>
+
     </div>
     <div id="mainbox3">
         <h1 class="mainboxtextreal1">Clips section</h1>
@@ -505,6 +536,13 @@
         <video style="width: 1000px;height: 600px;" src="Websiterclip10.mp4" controls type="video/mp4"></video>
         <h3 class="mainboxtextreal" style="text-align: left;">Cache double</h3>
         <img style="width: 1000px;height: 600px;" src="websiterclip11.gif"></img>
+        <h3 class="mainboxtextreal" style="text-align: left;">Spectacular Inferno match</h3>
+        <img style="width: 1000px;height: 600px;" src="websiterclip12.gif"></img>
+        <h3 class="mainboxtextreal" style="text-align: left;">HELLO</h3>
+        <img style="width: 1000px;height: 600px;" src="websiterclip13.gif"></img>
+        <h3 class="mainboxtextreal" style="text-align: left;">Inferno clutch</h3>
+        <img style="width: 1000px;height: 600px;" src="websiterclip14.gif"></img>
+
         <h3 class= "mainboxtext" onclick="killthisclips()">I'm done here. Explode.</h3>
     </div>
     <div id="mainbox4">
@@ -541,6 +579,15 @@
         const counter = document.getElementById('timesincewebsite');
         counter.textContent = `This website has existed for ${difference} seconds.`;
         setTimeout(secondswebsitefunctionthing, 1000);
+    }
+    // date then day stupid format
+    const newcontentdate = new Date('2026-06-15T07:50:00Z'); 
+    function secondswebsitenewthing() {
+        const now = new Date();
+        const difference = Math.floor((now - newcontentdate) / 1000);
+        const counter = document.getElementById('timesincenew');
+        counter.textContent = `TIME SINCE NEW STUFF WAS ADDED: ${difference} seconds.`;
+        setTimeout(secondswebsitenewthing, 1000);
     }
 
     const realvisitors = Math.floor(Math.random() * 23742);
@@ -592,6 +639,8 @@
         document.getElementById('menubutton3').style.zIndex='103';
         document.getElementById('menubutton4').style.zIndex='103';
         document.getElementById('menubutton5').style.zIndex='103';
+        document.getElementById('newarea').style.zIndex='103';
+        document.getElementById('timesincenew').style.zIndex='103';
         document.getElementById('timesincewebsite').style.zIndex='103';
         document.getElementById('realvisitorsnotfake').style.zIndex='103';
         document.getElementById('chudcertification').style.zIndex='103';
@@ -659,6 +708,7 @@
         audible.play();
     }
     secondswebsitefunctionthing()
+    secondswebsitenewthing()
 </script>
 
 <!-- add menu text that is pulled forward after settimeout
