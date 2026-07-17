@@ -112,7 +112,18 @@
         top: 450px;
         left: 350px;
         font-size: 100px;
-        z-index: 101;
+        z-index: 1000;
+    }
+
+    #clickenter {
+        display: block;
+        position: absolute;
+        font-family: 'Courier New', Courier, monospace;
+        color: #e8a200;
+        top: 650px;
+        left: 200px;
+        font-size: 70px;
+        z-index: 1000;
     }
     #welcomevid {
         top: 0px;
@@ -452,13 +463,66 @@
         100% {transform: rotateY(360deg);}
     }
 
+    .bestslideever {
+        position: absolute;
+        z-index: 1001;
+        right: 0%;
+        bottom: 0%;
+        width: 10%;
+    }
+    /* shamelessly copypasted slidercode i was lazy sorry :c */
+    .slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        /* border: 0;
+        border-radius: 50%; */
+        background-image: url("catmicrophone.png");
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        /* border: 0;
+        border-radius: 50%; */
+        background-image: url("catmicrophone.png");
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+
 </style>
 
 <body>
     <div>
+        <!-- <input type="range" id="volslider"> -->
+        <div class="bestslideever">
+            <input type="range" min="1" max="100" value="50" class="slider" id="volslider">
+        </div>
         <h1 id="welcometotext">Welcome to...</h1>
+        <h2 id="clickenter" onclick="sendtoback()">Click to enter. . . . . .</h2>
         <img id="loadingscreen" src="freezeframe1.gif">
-        <video id="welcomevid" autoplay preload="auto">
+        <video id="welcomevid" preload="auto">
             <source src="awesome intro video2!.mkv" type="video/mp4">
         </video>
         <img id="menubullet" src="bullet.gif" alt="bullet">
@@ -477,6 +541,9 @@
         <img id="gnomevahud" src="gnomevanobg.gif">
         <audio id="chudaudio">
             <source src="chud-certified.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="intromusic">
+            <source src="Hit The Floor.mp3" type="audio/mpeg">
         </audio>
         <!-- <img id="welcomescreen" src="gum y shart000959.png" alt="title frame" style="width: 100%;height: auto;position: absolute;z-index: 99;">
         <img id="welcomescreentitle" src="coolesttextever.gif" alt="title text" style="top: 50px;left: 300px;position: absolute;z-index: 98;"> -->
@@ -570,8 +637,14 @@
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     const awesomedate = new Date('2026-04-12T23:42:00Z');
     var audible = document.getElementById("chudaudio");
+    var introaudible = document.getElementById("intromusic");
     const loadvideo = document.getElementById('welcomevid');
     const loadsc = document.getElementById('loadingscreen');
+    
+    let volume = document.getElementById('volslider');
+    volume.addEventListener("change", function(e) {
+        introaudible.volume = e.currentTarget.value / 100;
+    })
 
     function secondswebsitefunctionthing() {
         const now = new Date();
@@ -581,7 +654,7 @@
         setTimeout(secondswebsitefunctionthing, 1000);
     }
     // date then day stupid format
-    const newcontentdate = new Date('2026-06-15T07:50:00Z'); 
+    const newcontentdate = new Date('2026-07-17T10:00:00Z'); 
     function secondswebsitenewthing() {
         const now = new Date();
         const difference = Math.floor((now - newcontentdate) / 1000);
@@ -626,8 +699,19 @@
     window.addEventListener("load", changeLoc);
     window.onload = changeLoc;
 
+    // if (loadpage == true && loadvideo.readyState >= 3) {
+    //     sendtoback()
+    //     // setTimeout("sendtoback()", 6100) //6100  6220  6230  8700 obviously change this to the exact amount after editing the video
+    // } else {
+    //     loadvideo.addEventListener('canplaythrough', sendtoback, { once: true });
+    // }
+
     function sendtoback() {
         loadsc.style.display = 'none';
+        document.getElementById('clickenter').style.zIndex='2';
+        document.getElementById('clickenter').style.display='hidden';
+        introaudible.play()
+        introaudible.volume = 0.1;
         loadvideo.play()
         loadvideo.addEventListener("ended", (event) => {
         document.getElementById('welcomevid').style.zIndex='0';
@@ -655,12 +739,6 @@
     // function videoreadyNOW(){
 
     // }
-    if (loadvideo.readyState >= 3) {
-        sendtoback()
-        // setTimeout("sendtoback()", 6100) //6100  6220  6230  8700 obviously change this to the exact amount after editing the video
-    } else {
-        loadvideo.addEventListener('canplaythrough', sendtoback, { once: true });
-    }
     
 
     function welcometotext() {
