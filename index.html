@@ -89,6 +89,23 @@
         z-index: 1;
         display: none;
     }
+    #mainbox6 {
+        overflow: scroll;
+        background-color: #FFB266;
+        color: black;
+        left: 300px;
+        padding: 10px 10px 10px 10px;
+        height: 850px;
+        width: 1000px;
+        border-color: #ff9833;
+        border-style: outset;
+        border-radius: 0px;
+        border-width: 8px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        display: none;
+    }
     #pin {
         position: absolute;
         top: 0;
@@ -137,6 +154,15 @@
         position: absolute;
         z-index: 100;
         object-fit: cover;
+    }
+    #secretvideo {
+        bottom: 0%;
+        left: 0%;
+        display: block;
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        z-index: 9999;
     }
     #welcomescreen {
         top: 0px;
@@ -245,6 +271,23 @@
         /* animation-delay: 0.1s; */
         text-shadow: 2px 2px black;
     }
+    #menubutton6 {
+        position: fixed;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 50px;
+        top: 35%;
+        left: 65%;
+        width: 40%;
+        /* background-color: #e3b829; */
+        color: #e8a200;
+        z-index: 97;
+        transform: translateY(-40%);
+        animation: GETDOWN6 3s forwards;
+        animation-delay: 7.3s;
+        /* animation-delay: 0.1s; */
+        text-shadow: 2px 2px black;
+    }
+
 
     #newarea {
         position: fixed;
@@ -332,6 +375,9 @@
         color: #e82e00;
     }
     #menubutton5:hover {
+        color: #e82e00;
+    }
+    #menubutton6:hover {
         color: #e82e00;
     }
     
@@ -449,6 +495,12 @@
         }
     }
 
+    @keyframes GETDOWN6 {
+        to {
+            left: 65%;
+        }
+    }
+
     @keyframes thesmokewarrior {
         0% {
             opacity: 0;
@@ -531,6 +583,7 @@
         <h1 id="menubutton3" onclick="document.getElementById('mainbox3').style.zIndex='105',document.getElementById('mainbox3').style.display='block'">Clips</h1>
         <h1 id="menubutton4" onclick="document.getElementById('mainbox4').style.zIndex='105',document.getElementById('mainbox4').style.display='block'">Checklist</h1>
         <h1 id="menubutton5" onclick="document.getElementById('mainbox5').style.zIndex='105',document.getElementById('mainbox5').style.display='block'">Gnomeva</h1>
+        <h1 id="menubutton6" onclick="document.getElementById('mainbox6').style.zIndex='105',document.getElementById('mainbox6').style.display='block'">Videos</h1>
         <h1 id="timesincewebsite">0</h1>
         <h1 id="realvisitorsnotfake"></h1>
         <img id="newarea" src="flamingtext_com-936542157.gif" alt="NEW CONTENT!!">
@@ -545,6 +598,7 @@
         <audio id="intromusic">
             <source src="Hit The Floor.mp3" type="audio/mpeg">
         </audio>
+        <iframe id="secretvideo" src="https://www.youtube.com/watch?v=wmneSkWSlQ4" frameborder="0"></iframe>
         <!-- <img id="welcomescreen" src="gum y shart000959.png" alt="title frame" style="width: 100%;height: auto;position: absolute;z-index: 99;">
         <img id="welcomescreentitle" src="coolesttextever.gif" alt="title text" style="top: 50px;left: 300px;position: absolute;z-index: 98;"> -->
     </div>
@@ -630,6 +684,12 @@
         <img style="width: 1000px;height: 850px;" src="gnomevanobg.gif" alt="Gnomeva no bg gif">
         <h3 class= "mainboxtext" onclick="killthisshrine()">Thank you for this. I'm going now</h3>
     </div>
+    <div id="mainbox6">
+        <h1 class="mainboxtextreal1">Videos I have made</h1>
+        <h3 class="mainboxtextreal" style="text-align: left;">My Tarkov video</h3>
+        <iframe style="height: 500px;width: 750px;" src="https://youtu.be/hohtGAPWP60" frameborder="0"></iframe>
+        <h3 class= "mainboxtext" onclick="killthisvideos()">Goodbye videos</h3>
+    </div>
 </body>
 
 <!-- and yes, i'm putting the script in the same html file. and bugs? dont get patched! -->
@@ -640,6 +700,7 @@
     var introaudible = document.getElementById("intromusic");
     const loadvideo = document.getElementById('welcomevid');
     const loadsc = document.getElementById('loadingscreen');
+    const secretvid = document.getElementById('secretvideo');
     
     let volume = document.getElementById('volslider');
     volume.addEventListener("change", function(e) {
@@ -654,7 +715,7 @@
         setTimeout(secondswebsitefunctionthing, 1000);
     }
     // date then day stupid format
-    const newcontentdate = new Date('2026-07-17T10:00:00Z'); 
+    const newcontentdate = new Date('2026-09-05T01:59:00Z'); 
     function secondswebsitenewthing() {
         const now = new Date();
         const difference = Math.floor((now - newcontentdate) / 1000);
@@ -723,6 +784,7 @@
         document.getElementById('menubutton3').style.zIndex='103';
         document.getElementById('menubutton4').style.zIndex='103';
         document.getElementById('menubutton5').style.zIndex='103';
+        document.getElementById('menubutton6').style.zIndex='103';
         document.getElementById('newarea').style.zIndex='103';
         document.getElementById('timesincenew').style.zIndex='103';
         document.getElementById('timesincewebsite').style.zIndex='103';
@@ -777,6 +839,10 @@
 
     function killthisshrine() {
         document.getElementById('mainbox5').style.display='none';
+    }
+
+    function killthisvideos() {
+        document.getElementById('mainbox6').style.display='none';
     }
 
     function makemeahud() {
