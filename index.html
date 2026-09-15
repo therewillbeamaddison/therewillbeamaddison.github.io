@@ -574,9 +574,7 @@
         <h1 id="welcometotext">Welcome to...</h1>
         <h2 id="clickenter" onclick="sendtoback()">Click to enter. . . . . .</h2>
         <img id="loadingscreen" src="freezeframe1.gif">
-        <video id="welcomevid" preload="auto">
-            <source src="awesome intro video2!.mkv" type="video/mp4">
-        </video>
+        <video id="welcomevid" preload="auto" src="" type="video/mp4"></video>
         <img id="menubullet" src="bullet.gif" alt="bullet">
         <h1 id="menubutton" onclick="document.getElementById('mainbox').style.zIndex='105',document.getElementById('mainbox').style.display='block'">Where am I?</h1>
         <h1 id="menubutton2" onclick="document.getElementById('mainbox2').style.zIndex='105',document.getElementById('mainbox2').style.display='block'">Screenies</h1>
@@ -589,7 +587,7 @@
         <img id="newarea" src="flamingtext_com-936542157.gif" alt="NEW CONTENT!!">
         <h1 id="timesincenew">0</h1>
         <img id="chudcertification" src="badgeofhonour.png" onclick="playchud()">
-        <img id="welcomescreen" src="freezeframe2.gif" alt="title text">
+        <img id="welcomescreen" src="" alt="title text">
         <img id="destroyitall" src="missilegif.gif">
         <img id="gnomevahud" src="gnomevanobg.gif">
         <audio id="chudaudio">
@@ -633,8 +631,10 @@
     <div id="mainbox3">
         <h1 class="mainboxtextreal1">Clips section</h1>
         <h2 class="mainboxtextreal">Clip time clip time clip time clip time</h2>
-        <h3 class="mainboxtextreal" style="text-align: left;">The intro clip! Again!</h3>
+        <h3 class="mainboxtextreal" style="text-align: left;">The cs intro clip! Again!</h3>
         <video style="width: 1000px;height: 600px;" src="awesome intro video2!.mkv" controls type="video/mp4"></video>
+        <h3 class="mainboxtextreal" style="text-align: left;">The deadlock intro clip! Again!</h3>
+        <video style="width: 1000px;height: 600px;" src="awesome intro video3!.mkv" controls type="video/mp4"></video>
         <h3 class="mainboxtextreal" style="text-align: left;">Real clip</h3>
         <img style="width: 1000px;height: 600px;" src="websiterclip1.gif"></img>
         <h3 class="mainboxtextreal" style="text-align: left;">He slipped and fell :o</h3>
@@ -676,6 +676,7 @@
         <h3 class="mainboxtextreal" >Checklist</h3>
         <h3 class="mainboxtextreal" >Gnomeva shrine</h3>
         <h3 class="mainboxtextreal" >Chud badge</h3>
+        <h3 class="mainboxtextreal" >Videos</h3>
         <h3 class= "mainboxtext" onclick="killthislist()">No fancy close. Just go.</h3>
     </div>
     <div id="mainbox5">
@@ -720,7 +721,7 @@
         setTimeout(secondswebsitefunctionthing, 1000);
     }
     // date then day stupid format
-    const newcontentdate = new Date('2026-09-05T01:59:00Z'); 
+    const newcontentdate = new Date('2026-09-15T17:35:00Z'); 
     function secondswebsitenewthing() {
         const now = new Date();
         const difference = Math.floor((now - newcontentdate) / 1000);
@@ -745,8 +746,24 @@
     console.log(randomthefonts);
     console.log(randomr, randomg, randomb);
 
+    var randomvid
+
+    function chooseintrovideo() {
+        var vidlist = ['awesome intro video2!.mkv','awesome intro video3!.mp4'];
+        randomvid = vidlist[Math.floor(Math.random() * vidlist.length)];
+        loadvideo.src = randomvid;
+    }
+    
+    function choosewelcome() {
+        if (randomvid === 'awesome intro video2!.mkv') {
+            document.getElementById('welcomescreen').src = 'freezeframe2.gif';
+        } else {
+            document.getElementById('welcomescreen').src = 'freezeframe3.gif';
+        }
+    }
+
     function changeLoc() {
-        const maplist = ['De_vertigo_lower_radar.webp', 'Map_Stillwater_Bayou_Blank.png', 'Cs2_italy_radar.webp', 'nuke_radar.webp'];
+        const maplist = ['De_vertigo_lower_radar.webp', 'Map_Stillwater_Bayou_Blank.png', 'Cs2_italy_radar.webp', 'nuke_radar.webp', 'deadlock_map.png'];
         const randommap = maplist[Math.floor(Math.random() * maplist.length)];
         document.getElementById('map').src = randommap;
         const restrx = mapcontainer.clientWidth - pin.clientWidth;
@@ -765,14 +782,9 @@
     window.addEventListener("load", changeLoc);
     window.onload = changeLoc;
 
-    // if (loadpage == true && loadvideo.readyState >= 3) {
-    //     sendtoback()
-    //     // setTimeout("sendtoback()", 6100) //6100  6220  6230  8700 obviously change this to the exact amount after editing the video
-    // } else {
-    //     loadvideo.addEventListener('canplaythrough', sendtoback, { once: true });
-    // }
-
     function sendtoback() {
+        chooseintrovideo()
+        choosewelcome()
         loadsc.style.display = 'none';
         document.getElementById('clickenter').style.zIndex='2';
         document.getElementById('clickenter').style.display='hidden';
@@ -856,6 +868,7 @@
     function playchud() {
         audible.play();
     }
+    
     secondswebsitefunctionthing()
     secondswebsitenewthing()
 </script>
